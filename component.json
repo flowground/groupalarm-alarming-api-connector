@@ -1,0 +1,775 @@
+{
+    "title": " groupalarm Alarming API",
+    "description": "The alarming service implements the alarming logic and connected items, e.g. labels or units\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "docsUrl": "",
+    "url": "https://app.groupalarm.com/api/v1",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://app.groupalarm.com/api/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_API_Token": {
+                "label": "API-TOKEN (API_Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need an API-Token from the RBAC settings of your GroupAlarm organization. Place the token inside the HTTP-Header `API-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            },
+            "auth_Personal-Access-Token": {
+                "label": "Personal-Access-Token (Personal-Access-Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need a Personal Access Token from your profile settings. Place the token inside the HTTP-Header `Personal-Access-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "CreateAlarm": {
+            "main": "./lib/actions/CreateAlarm.js",
+            "title": "CreateAlarm",
+            "description": "Creates an alarm for an event and calculate required user for a notification",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateAlarm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAlarm": {
+            "main": "./lib/actions/GetAlarm.js",
+            "title": "GetAlarm",
+            "description": "Returns an alarm payload for requested alarm id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAlarm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CloseAlarm": {
+            "main": "./lib/actions/CloseAlarm.js",
+            "title": "CloseAlarm",
+            "description": "Closes the alarm with the passed alarm id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CloseAlarm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PreviewAlarm": {
+            "main": "./lib/actions/PreviewAlarm.js",
+            "title": "PreviewAlarm",
+            "description": "Closes the alarm with the passed alarm id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PreviewAlarm.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAlarms": {
+            "main": "./lib/actions/GetAlarms.js",
+            "title": "GetAlarms",
+            "description": "Returns all alarms",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAlarms.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateAlarmTemplate": {
+            "main": "./lib/actions/CreateAlarmTemplate.js",
+            "title": "CreateAlarmTemplate",
+            "description": "Creates an alarm template with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateAlarmTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAlarmTemplate": {
+            "main": "./lib/actions/GetAlarmTemplate.js",
+            "title": "GetAlarmTemplate",
+            "description": "Returns a specific alarm template for passed template id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAlarmTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateAlarmTemplate": {
+            "main": "./lib/actions/UpdateAlarmTemplate.js",
+            "title": "UpdateAlarmTemplate",
+            "description": "Updates an alarm template with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateAlarmTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteAlarmTemplate": {
+            "main": "./lib/actions/DeleteAlarmTemplate.js",
+            "title": "DeleteAlarmTemplate",
+            "description": "Updates an alarm template with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteAlarmTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAlarmTemplates": {
+            "main": "./lib/actions/GetAlarmTemplates.js",
+            "title": "GetAlarmTemplates",
+            "description": "Returns all alarm templates for passed organization id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAlarmTemplates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateEvent": {
+            "main": "./lib/actions/CreateEvent.js",
+            "title": "CreateEvent",
+            "description": "Creates an event with the passed event payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateEvent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetEvent": {
+            "main": "./lib/actions/GetEvent.js",
+            "title": "GetEvent",
+            "description": "Creates an event with the passed event ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetEvent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CloseEvent": {
+            "main": "./lib/actions/CloseEvent.js",
+            "title": "CloseEvent",
+            "description": "Closes an event with the passed event ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CloseEvent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetEvents": {
+            "main": "./lib/actions/GetEvents.js",
+            "title": "GetEvents",
+            "description": "Returns paginated events of a passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetEvents.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOpenEvents": {
+            "main": "./lib/actions/GetOpenEvents.js",
+            "title": "GetOpenEvents",
+            "description": "Returns all open events of a passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOpenEvents.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateLabel": {
+            "main": "./lib/actions/CreateLabel.js",
+            "title": "CreateLabel",
+            "description": "Creates a new label with the passed label payload parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetLabel": {
+            "main": "./lib/actions/GetLabel.js",
+            "title": "GetLabel",
+            "description": "Returns a specific label with passed ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateLabel": {
+            "main": "./lib/actions/UpdateLabel.js",
+            "title": "UpdateLabel",
+            "description": "Updates a specific label by a passed label ID and a label payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteLabel": {
+            "main": "./lib/actions/DeleteLabel.js",
+            "title": "DeleteLabel",
+            "description": "Deletes the label with passed ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AssignLabel": {
+            "main": "./lib/actions/AssignLabel.js",
+            "title": "AssignLabel",
+            "description": "Assignes a user to a label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AssignLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UnassignLabel": {
+            "main": "./lib/actions/UnassignLabel.js",
+            "title": "UnassignLabel",
+            "description": "Unassignes a user from a label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UnassignLabel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetLabels": {
+            "main": "./lib/actions/GetLabels.js",
+            "title": "GetLabels",
+            "description": "Get all labels for queried organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetLabelsCSV": {
+            "main": "./lib/actions/GetLabelsCSV.js",
+            "title": "GetLabelsCSV",
+            "description": "Get all labels for queried organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetLabelsCSV.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ImportLabels": {
+            "main": "./lib/actions/ImportLabels.js",
+            "title": "ImportLabels",
+            "description": "Imports multiple labels for the passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ImportLabels.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetStrength": {
+            "main": "./lib/actions/GetStrength.js",
+            "title": "GetStrength",
+            "description": "Get label to strength configuration for passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetStrength.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpsertStrength": {
+            "main": "./lib/actions/UpsertStrength.js",
+            "title": "UpsertStrength",
+            "description": "Creates a new or changes an existing strength configuration for passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpsertStrength.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUserRanks": {
+            "main": "./lib/actions/GetUserRanks.js",
+            "title": "GetUserRanks",
+            "description": "Get all assigned ranks for every user of the passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUserRanks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AssignUserRank": {
+            "main": "./lib/actions/AssignUserRank.js",
+            "title": "AssignUserRank",
+            "description": "Assing a rank to passed user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AssignUserRank.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateScenario": {
+            "main": "./lib/actions/CreateScenario.js",
+            "title": "CreateScenario",
+            "description": "Creates a scenario with the passed parameters of a scenario payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateScenario.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetScenario": {
+            "main": "./lib/actions/GetScenario.js",
+            "title": "GetScenario",
+            "description": "Returns a specific scenario payload for a scenario with passed ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetScenario.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateScenario": {
+            "main": "./lib/actions/UpdateScenario.js",
+            "title": "UpdateScenario",
+            "description": "Updates an existing scenario with passed scenario ID and scenario payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateScenario.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteScenario": {
+            "main": "./lib/actions/DeleteScenario.js",
+            "title": "DeleteScenario",
+            "description": "Deletes an existing scenario with passed scenario ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteScenario.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetScenarios": {
+            "main": "./lib/actions/GetScenarios.js",
+            "title": "GetScenarios",
+            "description": "Returns all scenarios in the organization with the passed ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetScenarios.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetSchedules": {
+            "main": "./lib/actions/GetSchedules.js",
+            "title": "GetSchedules",
+            "description": "Get all shift schedules for queried organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetSchedules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateSchedule": {
+            "main": "./lib/actions/CreateSchedule.js",
+            "title": "CreateSchedule",
+            "description": "Create a new shift schedule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateSchedule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetSchedules_1": {
+            "main": "./lib/actions/GetSchedules_1.js",
+            "title": "GetSchedules",
+            "description": "Get a single shift schedule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetSchedules_1.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateSchedule": {
+            "main": "./lib/actions/UpdateSchedule.js",
+            "title": "UpdateSchedule",
+            "description": "Update an existing shift schedule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateSchedule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteSchedule": {
+            "main": "./lib/actions/DeleteSchedule.js",
+            "title": "DeleteSchedule",
+            "description": "Delete an existing shift schedule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteSchedule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateUnit": {
+            "main": "./lib/actions/CreateUnit.js",
+            "title": "CreateUnit",
+            "description": "Creates an unit with passed unit payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateUnit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUnit": {
+            "main": "./lib/actions/GetUnit.js",
+            "title": "GetUnit",
+            "description": "Returns a specific unit with the passed unit ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUnit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateUnit": {
+            "main": "./lib/actions/UpdateUnit.js",
+            "title": "UpdateUnit",
+            "description": "Updates a specific unit by a passed unit ID and a unit creation payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateUnit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteUnit": {
+            "main": "./lib/actions/DeleteUnit.js",
+            "title": "DeleteUnit",
+            "description": "Deletes the unit with the passed unit ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteUnit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetUnits": {
+            "main": "./lib/actions/GetUnits.js",
+            "title": "GetUnits",
+            "description": "Returns all units of a passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetUnits.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

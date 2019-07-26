@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "int64"
+        },
+        "organization_id": {
+            "required": true,
+            "type": "int64"
+        }
+    }
+}

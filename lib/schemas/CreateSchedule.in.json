@@ -1,0 +1,89 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "ShiftSchedule contains meta-information about the schedule and multiple shifts",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "shifts": {
+                    "type": "array",
+                    "items": {
+                        "description": "Shift describes the intervals of a shift and the assigned users all user defined parameters",
+                        "type": "object",
+                        "properties": {
+                            "assignees": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                },
+                                "x-go-name": "Assignees"
+                            },
+                            "color": {
+                                "type": "string",
+                                "x-go-name": "Color"
+                            },
+                            "days": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                },
+                                "x-go-name": "Days"
+                            },
+                            "endTime": {
+                                "type": "string",
+                                "x-go-name": "EndTime"
+                            },
+                            "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "ID"
+                            },
+                            "mappingDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "x-go-name": "MappingDate"
+                            },
+                            "mappingLength": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "MappingLength"
+                            },
+                            "name": {
+                                "type": "string",
+                                "x-go-name": "Name"
+                            },
+                            "shiftScheduleID": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "ShiftScheduleID"
+                            },
+                            "startTime": {
+                                "type": "string",
+                                "x-go-name": "StartTime"
+                            }
+                        },
+                        "x-go-package": "groupalarm.com/go/alarming/api/services"
+                    },
+                    "x-go-name": "Shifts"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}

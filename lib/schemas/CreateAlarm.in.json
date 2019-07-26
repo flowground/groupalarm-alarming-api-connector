@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "This is used for an alarm creation",
+            "type": "object",
+            "title": "AlarmCreationRequest defines an alarm creation payload",
+            "required": [
+                "organizationID",
+                "message",
+                "mode",
+                "startTime"
+            ],
+            "properties": {
+                "alarmTemplateID": {
+                    "description": "Alarm message template ID",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "AlarmTemplateID"
+                },
+                "eventID": {
+                    "description": "id of an existing event",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "EventID"
+                },
+                "eventName": {
+                    "description": "Name of an event; if event name is passed, a new event will be created with the passed name",
+                    "type": "string",
+                    "x-go-name": "EventName"
+                },
+                "labels": {
+                    "description": "list of labels to alarm",
+                    "type": "array",
+                    "minimum": 1,
+                    "items": {
+                        "description": "This is used for an alarm creation",
+                        "type": "object",
+                        "title": "AlarmCreationRequestLabel defines an alarm creation label payload",
+                        "properties": {
+                            "amount": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "Amount"
+                            },
+                            "labelID": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "LabelID"
+                            }
+                        },
+                        "x-go-package": "groupalarm.com/go/alarming/api/services"
+                    },
+                    "x-go-name": "Labels"
+                },
+                "message": {
+                    "description": "Alarm message",
+                    "type": "string",
+                    "x-go-name": "Message"
+                },
+                "mode": {
+                    "description": "Alarm mode (strict|best-effort)",
+                    "type": "string",
+                    "x-go-name": "Mode"
+                },
+                "optionalContent": {
+                    "description": "PropertyMap is used as container for additional data in alarms or messages\nit can be stored and retrieved easily in our Postgres database",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "x-go-package": "groupalarm.com/go/common"
+                },
+                "organizationID": {
+                    "description": "ID of the organization to create the alarm as",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "scenarioID": {
+                    "description": "id from the scenario",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "x-go-name": "ScenarioID"
+                },
+                "startTime": {
+                    "description": "Start time for this alarm",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "StartTime"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}

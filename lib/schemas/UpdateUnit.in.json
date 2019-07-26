@@ -1,0 +1,70 @@
+{
+    "type": "object",
+    "properties": {
+        "unitID": {
+            "required": true,
+            "type": "int64"
+        },
+        "requestBody": {
+            "description": "This is used for the unit creation dialog",
+            "type": "object",
+            "title": "UnitCreationRequest describes an unit creation payload",
+            "required": [
+                "name",
+                "description",
+                "organizationID",
+                "unitParts"
+            ],
+            "properties": {
+                "description": {
+                    "description": "user given description for this unit",
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "name": {
+                    "description": "user given name for this unit",
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "description": "id from assigned organization",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "unitParts": {
+                    "description": "assigned unit parts for labels and their amounts",
+                    "type": "array",
+                    "items": {
+                        "description": "This is used for the unit creation dialog and unit parts inside the unit creation payload",
+                        "type": "object",
+                        "title": "UnitPartCreationRequest describes an unit part creation payload",
+                        "properties": {
+                            "amount": {
+                                "description": "Amount of users for the defined label",
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "Amount"
+                            },
+                            "labelID": {
+                                "description": "ID of the assigned label",
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "LabelID"
+                            },
+                            "unitID": {
+                                "description": "ID of the unit",
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "UnitID"
+                            }
+                        },
+                        "x-go-package": "groupalarm.com/go/alarming/api/services"
+                    },
+                    "x-go-name": "UnitParts"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}

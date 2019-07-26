@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "labelID": {
+            "required": true,
+            "type": "int64"
+        },
+        "requestBody": {}
+    }
+}

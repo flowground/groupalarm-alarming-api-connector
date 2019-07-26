@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "labelID": {
+            "required": true,
+            "type": "int64"
+        },
+        "userID": {
+            "required": true,
+            "type": "int64"
+        }
+    }
+}

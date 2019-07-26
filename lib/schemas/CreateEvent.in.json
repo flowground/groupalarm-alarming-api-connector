@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Event describes an event payload",
+            "type": "object",
+            "required": [
+                "name",
+                "startDate",
+                "organizationID"
+            ],
+            "properties": {
+                "endDate": {
+                    "description": "time where this event was closed",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "EndDate"
+                },
+                "id": {
+                    "description": "id for this event",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "name": {
+                    "description": "user given name for this event",
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "description": "organization assignment by organization ID",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "scheduledEndtime": {
+                    "description": "time this event is scheduled for close",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "ScheduledEndtime"
+                },
+                "startDate": {
+                    "description": "time where this event starts",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "StartDate"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "organization": {
+            "required": true,
+            "type": "int64"
+        },
+        "requestBody": {
+            "description": "This is used for the strength config and wraps all configurations inside an array",
+            "type": "object",
+            "title": "Definition a strength config payload",
+            "required": [
+                "configs"
+            ],
+            "properties": {
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "description": "StrengthConfig describes a strength configuration payload",
+                        "type": "object",
+                        "properties": {
+                            "labels": {
+                                "description": "assigned label ids for this rank",
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                },
+                                "x-go-name": "Labels"
+                            },
+                            "rank": {
+                                "description": "rank definition (soldier, officer, general, summary)",
+                                "type": "string",
+                                "x-go-name": "Rank"
+                            }
+                        },
+                        "x-go-package": "groupalarm.com/go/alarming/api/services"
+                    },
+                    "x-go-name": "Configs"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/handler"
+        }
+    }
+}

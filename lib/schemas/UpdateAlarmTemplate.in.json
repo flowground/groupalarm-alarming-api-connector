@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "int64"
+        },
+        "template": {
+            "required": true,
+            "type": "string",
+            "description": "AlarmTemplate defines an alarm template payload",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "message": {
+                    "type": "string",
+                    "x-go-name": "Message"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}

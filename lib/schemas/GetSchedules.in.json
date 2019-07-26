@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "organization": {
+            "required": true,
+            "type": "int64"
+        }
+    }
+}

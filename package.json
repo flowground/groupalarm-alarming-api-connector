@@ -1,0 +1,15 @@
+{
+    "name": "groupalarm-alarming-api-connector",
+    "version": "1.16.7",
+    "description": "The alarming service implements the alarming logic and connected items, e.g. labels or units\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "main": "component.json",
+    "dependencies": {
+        "elasticio-node": "0.0.9",
+        "elasticio-sailor-nodejs": "^2.2.1",
+        "swagger-client": "^3.8.22"
+    },
+    "author": {
+        "name": "Deutsche Telekom AG"
+    },
+    "license": "Apache-2.0"
+}

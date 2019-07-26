@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "organization": {
+            "required": true,
+            "type": "int64"
+        },
+        "limit": {
+            "type": "int64"
+        },
+        "offset": {
+            "type": "int64"
+        }
+    }
+}

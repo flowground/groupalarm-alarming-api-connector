@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "organization": {
+            "required": true,
+            "type": "int64"
+        },
+        "limit": {
+            "type": "int64",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 10
+        },
+        "offset": {
+            "type": "int64",
+            "default": 0
+        },
+        "event": {
+            "type": "int64"
+        }
+    }
+}

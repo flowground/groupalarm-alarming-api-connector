@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "eventID": {
+            "required": true,
+            "type": "int64"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "organization": {
+            "required": true,
+            "type": "int64"
+        },
+        "requestBody": {
+            "description": "This is used for a user-rank assignment request",
+            "type": "object",
+            "title": "Definition an user to rank assignment request payload",
+            "required": [
+                "userID",
+                "rank"
+            ],
+            "properties": {
+                "rank": {
+                    "description": "rank value",
+                    "type": "string",
+                    "x-go-name": "Rank"
+                },
+                "userID": {
+                    "description": "userID",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "UserID"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/handler"
+        }
+    }
+}

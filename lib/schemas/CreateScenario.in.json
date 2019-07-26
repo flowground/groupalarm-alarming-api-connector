@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "ScenarioCreationRequest contains the a creation request of a scenario",
+            "type": "object",
+            "required": [
+                "name",
+                "description",
+                "units",
+                "organizationID",
+                "sendPosition"
+            ],
+            "properties": {
+                "description": {
+                    "description": "user given description for this scenario",
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "instructionCatalogID": {
+                    "description": "possible id of an instruction catalog",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "InstructionCatalogID"
+                },
+                "name": {
+                    "description": "user given name for this scenario",
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "description": "assigned organization by an ID",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "sendPosition": {
+                    "description": "send position to users after alarm is closed",
+                    "type": "boolean",
+                    "x-go-name": "SendPosition"
+                },
+                "units": {
+                    "description": "all units by their ID in an array",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "x-go-name": "Units"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/alarming/api/services"
+        }
+    }
+}
